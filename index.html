@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Link Afiliado Shopee</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    .resultado {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f0f0f0;
+      word-wrap: break-word;
+      font-size: 15px;
+    }
+    button.copy {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button.copy:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Gerador de Link Afiliado Shopee</h2>
+  
+  <label for="link">Cole o link do produto:</label>
+  <input type="text" id="link" placeholder="https://shopee.com.br/..." />
+
+  <button onclick="gerar()">Gerar Link Afiliado</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function gerar() {
+      const codigoAfiliado = "an_18317990333"; // seu código fixo
+      let linkOriginal = document.getElementById("link").value.trim();
+
+      if (!linkOriginal) {
+        alert("Por favor, cole um link da Shopee.");
+        return;
+      }
+
+      if (!linkOriginal.includes("shopee.com")) {
+        alert("Esse link não parece ser da Shopee.");
+        return;
+      }
+
+      // Remove parâmetros antigos
+      let linkBase = linkOriginal.split("?")[0];
+
+      // Monta o link com o parâmetro de afiliado
+      let linkAfiliado = linkBase + "?utm_source=" + codigoAfiliado;
+
+      // Exibe com botão de copiar
+      document.getElementById("resultado").innerHTML = `
+        <strong>Seu link de afiliado:</strong><br>
+        <a href="${linkAfiliado}" target="_blank">${linkAfiliado}</a><br><br>
+        <button class="copy" onclick="copiar('${linkAfiliado}')">Copiar link</button>
+      `;
+    }
+
+    function copiar(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Link copiado!");
+      }).catch(() => {
+        alert("Não foi possível copiar.");
+      });
+    }
+  </script>
+</body>
+</html>
