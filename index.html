@@ -5,49 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gerador de Link Afiliado Shopee</title>
   <style>
+    /* Definindo o estilo para o body */
     body {
       font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: auto;
+      margin: 0;
       padding: 20px;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-    h2{
+
+    h2 {
       text-align: center;
+      font-size: 1.5rem;
     }
+
+    /* Ajuste para inputs e botões */
     input, button {
-      padding: 10px;
-      margin: 5px 0;
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      margin: 10px 0;
       font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
     }
-    #input, button #btn-gerar, button.abrir{
-      width: 320px;
-      height: 60px;
-    }
-    #btn-gerar {
-      background-color: #0098ff;
-      border: none;
-      font-weight: bold;
-      color: #fff;
-      border-radius: 5px;
-    }
-    .resultado {
-      margin-top: 10px;
-      padding: 10px;
-      word-wrap: break-word;
-      font-size: 15px;
-    }
-    button.abrir {
-      background: #4CAF50;
-      border: none;
+
+    button {
       cursor: pointer;
       font-weight: bold;
-      color: #fff;
-      border-radius: 5px;
     }
+
+    #btn-gerar {
+      background-color: #0098ff;
+      color: #fff;
+      border: none;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    /* Botão para abrir o link */
+    button.abrir {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+    }
+
+    /* Mensagens de erro e sucesso */
     .mensagem {
       padding: 10px;
       margin: 10px 0;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 16px;
       display: none;
     }
@@ -59,27 +76,62 @@
       background-color: #d4edda;
       color: #155724;
     }
-    #criado-por{
-      position: relative;
-      top: 100px;
-      left: 70px;
+
+    /* Ajustes específicos para telas pequenas */
+    @media (max-width: 500px) {
+      body {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .resultado {
+        font-size: 13px;
+      }
     }
+
+    /* Responsividade para garantir que o link não ultrapasse o limite */
+    a {
+      word-wrap: break-word;
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    /* Ajustando o rodapé */
+    #criado-por {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 20px;
+    }
+
   </style>
 </head>
 <body>
-  <h2>Gerador de Link Afiliado Shopee</h2>
-  
-  <label for="link">Cole o link do produto:</label>
-  <input type="text" id="link" placeholder="https://shopee.com.br/..." />
 
-  <button onclick="gerar()" id="btn-gerar">GERAR LINK</button>
+  <div class="container">
+    <h2>Gerador de Link Afiliado Shopee</h2>
+    
+    <label for="link">Cole o link do produto:</label>
+    <input type="text" id="link" placeholder="https://shopee.com.br/..." />
 
-  <div class="resultado" id="resultado"></div>
+    <button onclick="gerar()" id="btn-gerar">GERAR LINK</button>
 
-  <div id="mensagem" class="mensagem"></div>
+    <div class="resultado" id="resultado"></div>
 
-  <br><br>
-  <span id="criado-por">Criado por - Ribeiro Soluções Digitais</span>
+    <div id="mensagem" class="mensagem"></div>
+
+    <br><br>
+    <span id="criado-por">Criado por - Ribeiro Soluções Digitais</span>
+  </div>
 
   <script>
     function gerar() {
@@ -124,14 +176,6 @@
       mensagemDiv.style.display = 'block';
     }
   </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
