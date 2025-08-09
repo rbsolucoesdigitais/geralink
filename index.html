@@ -6,50 +6,46 @@
   <title>Gerador de Link Afiliado Shopee</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset de margin e padding */
+    /* Resetando margens e padding */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Definindo a fonte padrão */
+    /* Fonte padrão */
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
       color: #333;
+      padding: 20px;
     }
 
     /* Container principal */
     .container {
+      max-width: 600px;
+      margin: 0 auto;
       background-color: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       padding: 30px;
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
     }
 
     h2 {
       font-size: 1.8rem;
       color: #0098ff;
+      text-align: center;
       margin-bottom: 20px;
     }
 
-    /* Estilo do input */
+    /* Input grande */
     input {
       width: 100%;
-      padding: 14px 20px;
+      padding: 18px 20px;
       border-radius: 10px;
       border: 1px solid #ddd;
       margin-bottom: 20px;
-      font-size: 16px;
+      font-size: 18px;
       outline: none;
       transition: all 0.3s ease;
     }
@@ -59,13 +55,13 @@
       box-shadow: 0 0 5px rgba(0, 152, 255, 0.5);
     }
 
-    /* Estilo do botão */
+    /* Botões grandes */
     button {
       width: 100%;
-      padding: 14px;
+      padding: 20px;
       border-radius: 10px;
       border: none;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       color: #fff;
       cursor: pointer;
@@ -81,14 +77,15 @@
       opacity: 0.8;
     }
 
-    /* Resultado do link */
+    /* Resultado */
     .resultado {
-      margin-top: 30px;
-      padding: 15px;
+      margin-top: 20px;
+      padding: 20px;
       background-color: #f4f8fb;
       border-radius: 10px;
-      font-size: 14px;
+      font-size: 16px;
       word-wrap: break-word;
+      text-align: center;
     }
 
     .resultado a {
@@ -98,16 +95,16 @@
     }
 
     .resultado button {
-      margin-top: 10px;
+      margin-top: 15px;
       background-color: #4CAF50;
     }
 
     /* Mensagens de erro e sucesso */
     .mensagem {
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 8px;
-      font-size: 14px;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 10px;
+      font-size: 16px;
       display: none;
     }
 
@@ -125,6 +122,7 @@
     #criado-por {
       font-size: 12px;
       color: #888;
+      text-align: center;
       margin-top: 20px;
     }
 
@@ -135,16 +133,16 @@
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
       input, button {
-        font-size: 15px;
-        padding: 12px;
+        font-size: 16px;
+        padding: 16px;
       }
 
       .resultado {
-        font-size: 13px;
+        font-size: 14px;
       }
     }
   </style>
