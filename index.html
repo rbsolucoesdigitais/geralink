@@ -11,27 +11,59 @@
       margin: auto;
       padding: 20px;
     }
+    h2{
+      text-align: center;
+    }
     input, button {
-      width: 100%;
+      width: 450px;
       padding: 10px;
       margin: 5px 0;
       font-size: 16px;
     }
+    #btn-gerar {
+      width: 475px;
+      height: 60px;
+      background-color: #0098ff;
+      border: none;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 5px;
+    }
     .resultado {
       margin-top: 10px;
       padding: 10px;
-      background: #f0f0f0;
       word-wrap: break-word;
       font-size: 15px;
     }
-    button.copy {
+    button.abrir {
+      width: 475px;
+      height: 60px;
       background: #4CAF50;
-      color: white;
       border: none;
       cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 5px;
     }
-    button.copy:hover {
-      background: #45a049;
+    .mensagem {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 16px;
+      display: none;
+    }
+    .erro {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .sucesso {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    #criado-por{
+      position: relative;
+      top: 100px;
+      left: 70px;
     }
   </style>
 </head>
@@ -41,22 +73,30 @@
   <label for="link">Cole o link do produto:</label>
   <input type="text" id="link" placeholder="https://shopee.com.br/..." />
 
-  <button onclick="gerar()">Gerar Link Afiliado</button>
+  <button onclick="gerar()" id="btn-gerar">GERAR LINK</button>
 
   <div class="resultado" id="resultado"></div>
+
+  <div id="mensagem" class="mensagem"></div>
+
+  <br><br>
+  <span id="criado-por">Criado por - Ribeiro Soluções Digitais</span>
 
   <script>
     function gerar() {
       const codigoAfiliado = "an_18317990333"; // seu código fixo
       let linkOriginal = document.getElementById("link").value.trim();
 
+      const mensagemDiv = document.getElementById("mensagem");
+      mensagemDiv.style.display = 'none'; // Esconde a mensagem anterior
+
       if (!linkOriginal) {
-        alert("Por favor, cole um link da Shopee.");
+        mostrarMensagem("Por favor, cole um link da Shopee.", "erro");
         return;
       }
 
       if (!linkOriginal.includes("shopee.com")) {
-        alert("Esse link não parece ser da Shopee.");
+        mostrarMensagem("Esse link não parece ser da Shopee.", "erro");
         return;
       }
 
@@ -66,20 +106,23 @@
       // Monta o link com o parâmetro de afiliado
       let linkAfiliado = linkBase + "?utm_source=" + codigoAfiliado;
 
-      // Exibe com botão de copiar
+      // Exibe com botão para abrir o link
       document.getElementById("resultado").innerHTML = `
         <strong>Seu link de afiliado:</strong><br>
         <a href="${linkAfiliado}" target="_blank">${linkAfiliado}</a><br><br>
-        <button class="copy" onclick="copiar('${linkAfiliado}')">Copiar link</button>
+        <button class="abrir" onclick="abrirLink('${linkAfiliado}')">ABRIR LINK</button>
       `;
     }
 
-    function copiar(texto) {
-      navigator.clipboard.writeText(texto).then(() => {
-        alert("Link copiado!");
-      }).catch(() => {
-        alert("Não foi possível copiar.");
-      });
+    function abrirLink(link) {
+      window.open(link, '_blank');
+    }
+
+    function mostrarMensagem(mensagem, tipo) {
+      const mensagemDiv = document.getElementById("mensagem");
+      mensagemDiv.textContent = mensagem;
+      mensagemDiv.className = "mensagem " + tipo;
+      mensagemDiv.style.display = 'block';
     }
   </script>
 </body>
